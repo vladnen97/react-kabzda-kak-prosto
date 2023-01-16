@@ -9,6 +9,7 @@ function App() {
             <PageTitle title={"This is CRA"}/>
             <Accordion titleName={"Main"} collapsed={false}/>
             <Rating value={2}/>
+            <PageTitle title={"Test"}/>
             <Accordion titleName={"Last"} collapsed={false}/>
             <Rating value={5}/>
         </div>
