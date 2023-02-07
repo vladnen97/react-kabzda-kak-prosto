@@ -4,6 +4,10 @@ type AccordionPropsType = {
     titleName: string,
     collapsed: boolean
 }
+type AccordionTitlePropsType = {
+    title: string
+}
+
 
 function Accordion(props: AccordionPropsType) {
     if (!props.collapsed) {
@@ -20,10 +24,6 @@ function Accordion(props: AccordionPropsType) {
             </div>
         );
     }
-}
-
-type AccordionTitlePropsType = {
-    title: string
 }
 
 function AccordionTitle(props: AccordionTitlePropsType) {

@@ -1,10 +1,7 @@
 import React from "react";
 
-type RatingPropsType = {
-    value: 0 | 1 | 2 | 3 | 4 | 5
-}
 
-export function Rating(props: RatingPropsType) {
+export function Rating(props: {value: 0 | 1 | 2 | 3 | 4 | 5}) {
     if (props.value === 1) {
         return (
             <div className="rating">
@@ -72,10 +69,6 @@ export function Rating(props: RatingPropsType) {
     );
 }
 
-type StarPropsType = {
-    selected: boolean
-}
-
-function Star(props: StarPropsType) {
+function Star(props: {selected: boolean}) {
     return props.selected ? <b>star </b> : <>star </>;
 }
