@@ -6,8 +6,8 @@ function App() {
     return (
         <div className="App">
             <PageTitle title={"This is CRA"}/>
-            <Accordion titleName={"Main"} stars={2}/>
-            <Accordion titleName={"Last"} collapsed={true} stars={5}/>
+            <Accordion titleName={"Main"} stars={3}/>
+            <Accordion titleName={"Last"} collapsed={false} stars={1}/>
         </div>
     );
 }
