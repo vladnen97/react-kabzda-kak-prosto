@@ -1,8 +1,10 @@
 import React from "react";
+import {Rating} from '../Rating/Rating';
 
 type AccordionPropsType = {
     titleName: string,
-    collapsed: boolean
+    collapsed?: boolean
+    stars: 0 | 1 | 2 | 3 | 4 | 5
 }
 type AccordionTitlePropsType = {
     title: string
@@ -10,20 +12,12 @@ type AccordionTitlePropsType = {
 
 
 function Accordion(props: AccordionPropsType) {
-    if (!props.collapsed) {
         return (
             <div className="accordion">
                 <AccordionTitle title={props.titleName}/>
-                <AccordionBody/>
+                { !props.collapsed &&  <> <AccordionBody/><Rating value={props.stars}/> </>}
             </div>
         );
-    } else {
-        return (
-            <div className="accordion">
-                <AccordionTitle title={props.titleName}/>
-            </div>
-        );
-    }
 }
 
 function AccordionTitle(props: AccordionTitlePropsType) {
