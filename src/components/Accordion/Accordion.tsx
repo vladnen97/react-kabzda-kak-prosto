@@ -3,7 +3,6 @@ import {Rating} from '../Rating/Rating';
 
 type AccordionPropsType = {
     titleName: string,
-    stars: 0 | 1 | 2 | 3 | 4 | 5
 }
 type AccordionTitlePropsType = {
     title: string
