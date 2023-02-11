@@ -1,28 +1,35 @@
-import React from "react";
+import React, {useState} from 'react';
 import {Rating} from '../Rating/Rating';
 
 type AccordionPropsType = {
     titleName: string,
-    collapsed?: boolean
     stars: 0 | 1 | 2 | 3 | 4 | 5
 }
 type AccordionTitlePropsType = {
     title: string
+    toggle: () => void
 }
 
 
 function Accordion(props: AccordionPropsType) {
+
+    const [collapsed, setCollapsed] = useState<boolean>(false);
+
+    function toggle():void {
+        setCollapsed(!collapsed);
+    }
+
         return (
             <div className="accordion">
-                <AccordionTitle title={props.titleName}/>
-                { !props.collapsed &&  <> <AccordionBody/><Rating value={props.stars}/> </>}
+                <AccordionTitle title={props.titleName} toggle={toggle}/>
+                { !collapsed &&  <> <AccordionBody/> <Rating/> </>}
             </div>
         );
 }
 
 function AccordionTitle(props: AccordionTitlePropsType) {
     return (
-        <h2>--- {props.title} --- </h2>
+        <h2 onClick={props.toggle}>--- {props.title} --- </h2>
     );
 }
 
