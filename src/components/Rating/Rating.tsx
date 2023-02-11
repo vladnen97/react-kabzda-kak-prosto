@@ -1,13 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 
-export function Rating() {
+export function Rating(props: any) {
     type starType = {
         id: number
         title: string
     };
 
-    const [value, setValue] = useState<number>(0);
 
     const stars: Array<starType> = [
         {id: 1, title: 'star'},
@@ -20,9 +19,9 @@ export function Rating() {
 
     return (
         <div className="rating">
-            {stars.map(star => value > star.id - 1
-                ? <b key={star.id} onClick={() => setValue(star.id)}> {star.title} </b>
-                : <span key={star.id} onClick={() => setValue(star.id)}> {star.title} </span>)}
+            {stars.map(star => props.value > star.id - 1
+                ? <b key={star.id} onClick={() => props.setValue(star.id)}> {star.title} </b>
+                : <span key={star.id} onClick={() => props.setValue(star.id)}> {star.title} </span>)}
         </div>
     );
 }
