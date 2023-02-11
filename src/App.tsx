@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Accordion from "./components/Accordion/Accordion";
+import {OnOff} from './components/OnOff/OnOff';
 
 function App() {
     return (
@@ -8,6 +9,8 @@ function App() {
             <PageTitle title={"This is CRA"}/>
             <Accordion titleName={"Main"} stars={3}/>
             <Accordion titleName={"Last"} collapsed={false} stars={1}/>
+
+            <OnOff />
         </div>
     );
 }
