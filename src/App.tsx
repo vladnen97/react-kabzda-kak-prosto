@@ -8,7 +8,7 @@ function App() {
         <div className="App">
             <PageTitle title={"This is CRA"}/>
             <Accordion titleName={"Main"} stars={3}/>
-            <Accordion titleName={"Last"} collapsed={false} stars={1}/>
+            <Accordion titleName={"Last"} stars={1}/>
 
             <OnOff />
         </div>

@@ -5,20 +5,19 @@ export function Rating() {
 
     const [value, setValue] = useState<number>(0)
 
-
+    const stars = [
+        {id: 1, title: 'star'},
+        {id: 2, title: 'star'},
+        {id: 3, title: 'star'},
+        {id: 4, title: 'star'},
+        {id: 5, title: 'star'},
+    ]
 
     return (
         <div className="rating">
-            <button onClick={() => setValue(0)}> 0</button>
-            <Star selected={value > 0}/> <button onClick={() => setValue(1)}> 1</button>
-            <Star selected={value > 1}/> <button onClick={() => setValue(2)}> 2</button>
-            <Star selected={value > 2}/> <button onClick={() => setValue(3)}> 3</button>
-            <Star selected={value > 3}/> <button onClick={() => setValue(4)}>  4</button>
-            <Star selected={value > 4}/> <button onClick={() => setValue(5)}> 5</button>
+            {stars.map(star => value > star.id - 1
+                ? <b key={star.id} onClick={() => setValue(star.id)}> {star.title} </b>
+                : <span key={star.id} onClick={() => setValue(star.id)}> {star.title} </span>)}
         </div>
     );
-}
-
-function Star(props: {selected: boolean}) {
-    return props.selected ? <b>star </b> : <span>star </span>;
 }
