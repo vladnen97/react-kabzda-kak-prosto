@@ -13,7 +13,6 @@ type AccordionTitlePropsType = {
 function Accordion(props: AccordionPropsType) {
 
     const [collapsed, setCollapsed] = useState<boolean>(false);
-    const [value, setValue] = useState<number>(0);
 
     function toggle():void {
         setCollapsed(!collapsed);
@@ -22,7 +21,7 @@ function Accordion(props: AccordionPropsType) {
         return (
             <div className="accordion">
                 <AccordionTitle title={props.titleName} toggle={toggle}/>
-                { !collapsed &&  <> <AccordionBody/> <Rating setValue={setValue} value={value}/> </>}
+                { !collapsed &&  <> <AccordionBody/> <Rating/> </>}
             </div>
         );
 }
@@ -44,4 +43,4 @@ function AccordionBody() {
     );
 }
 
-export default Accordion;
+export {Accordion};

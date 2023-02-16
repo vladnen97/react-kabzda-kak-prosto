@@ -1,27 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 
-export function Rating(props: any) {
-    type starType = {
-        id: number
-        title: string
-    };
+type StarProps = {
+    selected: boolean
+}
 
-
-    const stars: Array<starType> = [
-        {id: 1, title: 'star'},
-        {id: 2, title: 'star'},
-        {id: 3, title: 'star'},
-        {id: 4, title: 'star'},
-        {id: 5, title: 'star'},
-    ];
+export function Rating() {
+    const [value, setValue] = useState<number>(0);
 
 
     return (
-        <div className="rating">
-            {stars.map(star => props.value > star.id - 1
-                ? <b key={star.id} onClick={() => props.setValue(star.id)}> {star.title} </b>
-                : <span key={star.id} onClick={() => props.setValue(star.id)}> {star.title} </span>)}
+        <div>
+            <Star selected={value > 0}/>
+            <Star selected={value > 1}/>
+            <Star selected={value > 2}/>
+            <Star selected={value > 3}/>
+            <Star selected={value > 4}/>
         </div>
     );
+}
+
+function Star(props: StarProps) {
+    return props.selected ? <b> star </b> : <span> star </span>
 }
