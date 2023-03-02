@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 
+type PropsType = {
+    defaultOn?: boolean
+}
+export function OnOff({defaultOn}: PropsType) {
 
-export function OnOff() {
-
-    const [on, setOn] = useState<boolean>(false);
+    const [on, setOn] = useState<boolean>(defaultOn ? defaultOn : false);
 
     const switcher = {
         marginTop: '40px',
