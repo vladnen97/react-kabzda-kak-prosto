@@ -6,6 +6,9 @@ import {ComponentMeta, ComponentStory} from '@storybook/react';
 export default {
     title: 'Components/Accordion',
     component: ControlledAccordion,
+    args: {
+        setCollapsed: action('accordion mode change event fired')
+    }
 } as ComponentMeta<typeof ControlledAccordion>;
 
 
@@ -15,14 +18,12 @@ export const Collapsed = Template.bind({});
 Collapsed.args = {
     titleName: 'Menu',
     collapsed: true,
-    setCollapsed: action('accordion mode change event fired'),
 };
 
 export const Uncollapsed = Template.bind({})
 Uncollapsed.args = {
     titleName: 'List',
     collapsed: false,
-    setCollapsed: action('accordion mode change event fired')
 }
 
 export const Changable = () => {
