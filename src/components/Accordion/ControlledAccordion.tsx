@@ -2,8 +2,18 @@ import React from 'react';
 import {Rating} from '../Rating/Rating';
 
 type AccordionPropsType = {
+    /**
+     *title of the accordion
+     */
     titleName: string,
+    /**
+     *is accrodion collapsed or not
+     */
     collapsed: boolean
+    /**
+     *  function that set will be accordion collapsed or  not
+     * @param collapsed value to be set
+     */
     setCollapsed: (collapsed: boolean) => void
 }
 type AccordionTitlePropsType = {
