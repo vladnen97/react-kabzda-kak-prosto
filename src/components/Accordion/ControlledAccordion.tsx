@@ -11,7 +11,7 @@ type AccordionPropsType = {
      */
     collapsed: boolean
     /**
-     *  function that set will be accordion collapsed or  not
+     *  function that change will be accordion collapsed or  not
      * @param collapsed value to be set
      */
     setCollapsed: (collapsed: boolean) => void
