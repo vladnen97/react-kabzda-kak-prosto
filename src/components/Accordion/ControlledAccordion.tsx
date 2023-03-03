@@ -1,6 +1,14 @@
 import React from 'react';
 import {Rating} from '../Rating/Rating';
 
+type AccordionTitlePropsType = {
+    title: string
+    toggle: () => void
+}
+type AccordionBodyPropsType = {
+    items: Array<{id: number, text: string}>
+    onClick: (value: string) => void
+}
 type AccordionPropsType = {
     /**
      *title of the accordion
@@ -15,14 +23,16 @@ type AccordionPropsType = {
      * @param collapsed value to be set
      */
     setCollapsed: (collapsed: boolean) => void
-}
-type AccordionTitlePropsType = {
-    title: string
-    toggle: () => void
+    /**
+     * list items inside an accordion
+     */
+    items: Array<{id: number, text: string}>
+
+    onClick: (value: string) => void
 }
 
 
-export function ControlledAccordion({titleName, collapsed, setCollapsed}: AccordionPropsType) {
+export function ControlledAccordion({titleName, collapsed, setCollapsed, items, onClick}: AccordionPropsType) {
 
     function toggle():void {
         setCollapsed(!collapsed);
@@ -31,7 +41,7 @@ export function ControlledAccordion({titleName, collapsed, setCollapsed}: Accord
         return (
             <div className="accordion">
                 <AccordionTitle title={titleName} toggle={toggle}/>
-                { !collapsed &&  <> <AccordionBody/> <Rating onChange={x=>x}/> </>}
+                { !collapsed &&  <> <AccordionBody items={items} onClick={onClick}/> <Rating onChange={x=>x}/> </>}
             </div>
         );
 }
@@ -41,13 +51,12 @@ function AccordionTitle(props: AccordionTitlePropsType) {
         <h2 onClick={props.toggle}>--- {props.title} --- </h2>
     );
 }
-function AccordionBody() {
+function AccordionBody({items, onClick}: AccordionBodyPropsType) {
     return (
         <ul>
-            <li>1 item</li>
-            <li>2 item</li>
-            <li>3 item</li>
-            <li>4 item</li>
+            {
+                items.length > 0 ?  items.map(el => <li onClick={() => onClick(el.text)} key={el.id}>- {el.text} -</li>) : <span>empty</span>
+            }
         </ul>
     );
 }
