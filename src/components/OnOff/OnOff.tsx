@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 
 type PropsType = {
+    /**
+     * value for switcher that can be set by default (true/false)
+     */
     defaultOn?: boolean
 }
 export function OnOff({defaultOn}: PropsType) {

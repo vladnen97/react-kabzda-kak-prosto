@@ -7,7 +7,14 @@ type StarProps = {
 }
 
 type PropsType = {
-    defaultValue?: 0 | 1 | 2 | 3 | 4 | 5
+    /**
+     * number of stars in the rating by default
+     */
+    defaultValue?: 1 | 2 | 3 | 4 | 5
+    /**
+     * Callback. called when the star click event fires
+     * @param value number of starts
+     */
     onChange: (value: 0 | 1 | 2 | 3 | 4 | 5) => void
 
 }

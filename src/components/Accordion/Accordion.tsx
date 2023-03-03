@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import {Rating} from '../Rating/Rating';
 
 type AccordionPropsType = {
+    /**
+     * title of accordion
+     */
     titleName: string,
 }
 type AccordionTitlePropsType = {
@@ -21,7 +24,7 @@ function Accordion(props: AccordionPropsType) {
         return (
             <div className="accordion">
                 <AccordionTitle title={props.titleName} toggle={toggle}/>
-                { !collapsed &&  <> <AccordionBody/> <Rating/> </>}
+                { !collapsed &&  <> <AccordionBody/> <Rating defaultValue={1} onChange={x=>x}/> </>}
             </div>
         );
 }

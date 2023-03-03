@@ -8,7 +8,14 @@ type StarProps = {
 }
 
 type PropsType = {
+    /**
+     * How many stars in the rating are selected
+     */
     value: number
+    /**
+     * Callback. sets the number of stars in the rating when clicked
+     * @param value value to be changed to
+     */
     setValue: (value: number) => void
 }
 

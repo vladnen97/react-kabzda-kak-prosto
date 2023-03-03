@@ -1,7 +1,14 @@
 import React from 'react';
 
 type PropsType = {
+    /**
+     * value to switch
+     */
     on: boolean
+    /**
+     * Callback. it calls when someone click on buttons
+     * @param on value to be changed
+     */
     setOn: (on: boolean) => void
 }
 
