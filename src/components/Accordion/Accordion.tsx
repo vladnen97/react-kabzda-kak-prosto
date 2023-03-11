@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Rating} from '../Rating/Rating';
+import React, {Reducer, useReducer} from 'react';
+import {ActionType, reducer, TOGGLE_COLLAPSED} from './reducer';
 
 type AccordionPropsType = {
     /**
@@ -13,18 +13,18 @@ type AccordionTitlePropsType = {
 }
 
 
-function Accordion(props: AccordionPropsType) {
-
-    const [collapsed, setCollapsed] = useState<boolean>(false);
+export function Accordion(props: AccordionPropsType) {
+    const [collapsed, dispatch] = useReducer<Reducer<boolean, ActionType>>(reducer, false);
 
     function toggle():void {
-        setCollapsed(!collapsed);
+        // setCollapsed(!collapsed);
+        dispatch({type: TOGGLE_COLLAPSED})
     }
 
         return (
             <div className="accordion">
                 <AccordionTitle title={props.titleName} toggle={toggle}/>
-                { !collapsed &&  <> <AccordionBody/> <Rating defaultValue={1} onChange={x=>x}/> </>}
+                { !collapsed &&  <> <AccordionBody/></>}
             </div>
         );
 }
@@ -46,4 +46,3 @@ function AccordionBody() {
     );
 }
 
-export {Accordion};
