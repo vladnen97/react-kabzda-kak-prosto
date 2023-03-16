@@ -1,4 +1,5 @@
 import React, {useMemo, useState} from 'react'
+import {ControlledSelectContainer} from '../components/Select/ControlledSelect';
 
 export default {
     title: 'Components/useMemo demo'
@@ -74,6 +75,45 @@ export const HelpsForReactMemo = () => {
 
         </div>
     )
+}
+
+export const MemoSelects = () => {
+    const cities = [
+        {value: 'abacan', title: 'Abacan'},
+        {value: 'armavir', title: 'Armavir'},
+        {value: 'anapa', title: 'Anapa'},
+        {value: 'belgorod', title: 'Belgorod'},
+        {value: 'bryansk', title: 'Bryansk'},
+        {value: 'bezhetsk', title: 'Bezhetsk'},
+        {value: 'viborg', title: 'Viborg'},
+        {value: 'vorkuta', title: 'Vorkuta'},
+        {value: 'volgograd', title: 'Volgograd'}
+    ]
+
+    const [select1, setSelect1] =useState('abacan')
+    const [select2, setSelect2] =useState('belgorod')
+    const [select3, setSelect3] =useState('viborg')
+
+
+    const Acities = useMemo(() => {
+        return cities.filter(el => el.title.includes('A'))
+    }, [])
+    const Bcities = useMemo(() => {
+        return cities.filter(el => el.title.includes('B'))
+    }, [])
+    const Vcities = useMemo(() => {
+        return cities.filter(el => el.title.includes('V'))
+    }, [])
+
+
+    return (
+        <div style={ {display: 'flex', gap: '20px', flexDirection: 'column'} }>
+            <ControlledSelectContainer onChange={setSelect1} items={Acities} value={select1}/>
+            <ControlledSelectContainer onChange={setSelect2} items={Bcities} value={select2}/>
+            <ControlledSelectContainer onChange={setSelect3} items={Vcities} value={select3}/>
+        </div>
+    )
+
 }
 
 
