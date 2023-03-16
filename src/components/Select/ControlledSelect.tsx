@@ -75,3 +75,5 @@ export function ControlledSelect({value, items, onChange}: PropsType) {
     )
 }
 
+export const ControlledSelectContainer = React.memo(ControlledSelect)
+
