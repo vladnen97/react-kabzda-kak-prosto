@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react'
+import React, {useCallback, useMemo, useState} from 'react'
 import {ControlledSelectContainer} from '../components/Select/ControlledSelect';
 
 export default {
@@ -26,13 +26,12 @@ export const UseMemo = () => {
     }, [a])
 
 
-
     for (let i = 2; i <= b; i++) {
         resultB *= i;
     }
 
     return <>
-        <div style={ {display: 'flex', gap: '20px'} }>
+        <div style={{display: 'flex', gap: '20px'}}>
 
             <div>
                 <input value={a} onChange={(e) => setA(+e.currentTarget.value)}/>
@@ -69,7 +68,7 @@ export const HelpsForReactMemo = () => {
         <div style={{display: 'flex', gap: '30px', alignItems: 'flex-start'}}>
 
             <button onClick={() => setCounter(counter + 1)}> +</button>
-            <button onClick={() => setUsers([...users, 'sveta']) }> add sveta </button>
+            <button onClick={() => setUsers([...users, 'sveta'])}> add sveta</button>
             <div>{counter}</div>
             <Users users={filteredArray}/>
 
@@ -90,9 +89,9 @@ export const MemoSelects = () => {
         {value: 'volgograd', title: 'Volgograd'}
     ]
 
-    const [select1, setSelect1] =useState('abacan')
-    const [select2, setSelect2] =useState('belgorod')
-    const [select3, setSelect3] =useState('viborg')
+    const [select1, setSelect1] = useState('abacan')
+    const [select2, setSelect2] = useState('belgorod')
+    const [select3, setSelect3] = useState('viborg')
 
 
     const Acities = useMemo(() => {
@@ -107,7 +106,7 @@ export const MemoSelects = () => {
 
 
     return (
-        <div style={ {display: 'flex', gap: '20px', flexDirection: 'column'} }>
+        <div style={{display: 'flex', gap: '20px', flexDirection: 'column'}}>
             <ControlledSelectContainer onChange={setSelect1} items={Acities} value={select1}/>
             <ControlledSelectContainer onChange={setSelect2} items={Bcities} value={select2}/>
             <ControlledSelectContainer onChange={setSelect3} items={Vcities} value={select3}/>
@@ -115,6 +114,41 @@ export const MemoSelects = () => {
     )
 
 }
+
+export const UseMemoForCallback = () => {
+    console.log('like useCallback')
+    const [counter, setCounter] = useState<number>(0)
+    const [books, setBooks] = useState(['react', 'js', 'css', 'html'])
+
+    const incrementHandler = () => setCounter(counter + 1)
+
+    // const memoAddBook = useMemo(() => {
+    //     return () => setBooks([...books, 'angularc'])
+    // }, [books])
+
+    const memoAddBook2 = useCallback(() => {
+        setBooks([...books, 'angularc'])
+    }, [books])
+
+    return (
+        <div style={{display: 'flex', gap: '30px', alignItems: 'flex-start', padding: '20px'}}>
+
+            <button onClick={incrementHandler}> +</button>
+            <div>{counter}</div>
+            <Books addBook={memoAddBook2}/>
+
+        </div>
+    )
+}
+
+const BooksSecret = (props: { addBook: () => void }) => {
+    console.log('book secret')
+
+    return <div style={{padding: '6px'}}>
+        <button onClick={props.addBook}> add book</button>
+    </div>
+}
+const Books = React.memo(BooksSecret)
 
 
 
