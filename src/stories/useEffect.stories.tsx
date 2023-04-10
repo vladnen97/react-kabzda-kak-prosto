@@ -35,4 +35,22 @@ export const Example1 = () => {
 }
 
 
+export const SetTimeoutExample = () => {
+    const [count, setCounter] = useState<number>(0);
+
+
+    useEffect(() => {
+        setInterval(() => {setCounter(state => state + 1)}, 1000)
+    }, [])
+
+
+    return (
+        <div>
+            <div style={{marginLeft: '34px', marginBottom: '20px'}}>counter - {count};</div>
+
+        </div>
+    )
+}
+
+
 
