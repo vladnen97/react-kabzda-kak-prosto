@@ -5,7 +5,6 @@ export default {
 }
 
 
-
 export const Example1 = () => {
     const [fake, setFake] = useState<number>(0);
     const [count, setCounter] = useState<number>(1);
@@ -28,19 +27,20 @@ export const Example1 = () => {
     return (
         <div>
             <div style={{marginLeft: '34px', marginBottom: '20px'}}>Hello, {count}, {fake}</div>
-            <button onClick={() => setCounter(state => state + 1)}> count + </button>
-            <button onClick={() => setFake(state => state + 1)}> fake + </button>
+            <button onClick={() => setCounter(state => state + 1)}> count +</button>
+            <button onClick={() => setFake(state => state + 1)}> fake +</button>
         </div>
     )
 }
-
 
 export const SetTimeoutExample = () => {
     const [count, setCounter] = useState<number>(0);
 
 
     useEffect(() => {
-        setInterval(() => {setCounter(state => state + 1)}, 1000)
+        setInterval(() => {
+            setCounter(state => state + 1)
+        }, 1000)
     }, [])
 
 
@@ -52,5 +52,29 @@ export const SetTimeoutExample = () => {
     )
 }
 
+export const ResetEffectExample = () => {
+    const [text, setText] = useState<string>('');
 
+
+    useEffect(() => {
+
+        const handler = (e: KeyboardEvent) => {
+            console.log(e.key)
+            setText(text + e.key)
+        }
+
+        window.addEventListener('keypress', handler)
+
+        return () => {
+            window.removeEventListener('keypress', handler)
+        }
+    }, [text])
+
+
+    return (
+        <div>
+            typed text: {text}
+        </div>
+    )
+}
 
